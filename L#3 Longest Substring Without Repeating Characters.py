@@ -1,27 +1,22 @@
-class Solution:
-    
-    def lengthOfLongestSubstring(self, s: str) -> int:
-    
-        def check(start, end):
-            chars = [0] * 128
-            for i in range(start, end + 1):
-                c = s[i]
-                chars[ord(c)] += 1
-                if chars[ord(c)] > 1:
-                    return False
-            return True
-
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        if not s:
+            return 0
         
-        n = len(s)
-
+        result = 1
+        window_set = {s[0], }
+        left = 0
+        right = 1
         
-        res = 0
-        for i in range(n):
-            for j in range(i, n):
-                if check(i, j):
-                    res = max(res, j - i + 1)
-        
-        return res
+        while right < len(s):
+            if s[right] not in window_set:
+                window_set.add(s[right])
+                right += 1
+            else:
+                left += 1
+                window_set.remove(s[left-1])
+            result = max(result, len(window_set))        
+        return result
 
 
 
