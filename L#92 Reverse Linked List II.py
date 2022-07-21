@@ -17,3 +17,7 @@ class Solution:
         for node in nodes:
             node.val = values.pop(-1)               #for replacing the values of the nodes
         return head
+
+    
+    #RESULT: 36ms
+    
