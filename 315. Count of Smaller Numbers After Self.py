@@ -8,3 +8,6 @@ class Solution:
             del arr[i]                  
             
         return ans
+
+    
+    #RESULT: 34ms
